@@ -1,0 +1,65 @@
+[run ] ADC/SBC binary, N/V/Z/C flags via PHP: reached done after 122 cycles
+    ok   mem[$0300]             expected $A0 (160) got $A0 (160)
+    ok   mem[$0301]             expected $F4 (244) got $F4 (244)
+    ok   mem[$0302]             expected $60 (96) got $60 (96)
+    ok   mem[$0303]             expected $34 (52) got $34 (52)
+    ok   mem[$0304]             expected $00 (0) got $00 (0)
+    ok   mem[$0305]             expected $37 (55) got $37 (55)
+    ok   mem[$0306]             expected $7F (127) got $7F (127)
+    ok   mem[$0307]             expected $75 (117) got $75 (117)
+    ok   mem[$0308]             expected $00 (0) got $00 (0)
+    ok   mem[$0309]             expected $15 (21) got $15 (21)
+    10/10 checks passed
+[run ] decimal mode ADC/SBC: reached done after 70 cycles
+    ok   mem[$0300]             expected $47 (71) got $47 (71)
+    ok   mem[$0301]             expected $29 (41) got $29 (41)
+    ok   mem[$0302]             expected $00 (0) got $00 (0)
+    ok   mem[$0303]             expected $01 (1) got $01 (1)
+    ok   mem[$0304]             expected $90 (144) got $90 (144)
+    5/5 checks passed
+[run ] loops, indexed and (zp),Y addressing, shift-add multiply: reached done after 3388 cycles
+    ok   mem[$0300]             expected $BA (186) got $BA (186)
+    ok   mem[$0301]             expected $13 (19) got $13 (19)
+    ok   mem[$0310]             expected $01 (1) got $01 (1)
+    ok   mem[$0311]             expected $01 (1) got $01 (1)
+    ok   mem[$0315]             expected $08 (8) got $08 (8)
+    ok   mem[$031A]             expected $59 (89) got $59 (89)
+    ok   mem[$031B]             expected $90 (144) got $90 (144)
+    ok   mem[$0400]             expected $DE (222) got $DE (222)
+    ok   mem[$0403]             expected $EF (239) got $EF (239)
+    ok   mem[$040F]             expected $5A (90) got $5A (90)
+    ok   mem[$0320]             expected $8F (143) got $8F (143)
+    ok   X                      expected $00 (0) got $00 (0)
+    ok   Y                      expected $0B (11) got $0B (11)
+    13/13 checks passed
+[run ] stack, JSR/RTS nesting, BRK/RTI through the IRQ vector: reached done after 145 cycles
+    ok   mem[$0300]             expected $FD (253) got $FD (253)
+    ok   mem[$0301]             expected $22 (34) got $22 (34)
+    ok   mem[$0302]             expected $11 (17) got $11 (17)
+    ok   mem[$0303]             expected $06 (6) got $06 (6)
+    ok   mem[$0304]             expected $77 (119) got $77 (119)
+    ok   mem[$0305]             expected $FF (255) got $FF (255)
+    ok   mem[$0306]             expected $F9 (249) got $F9 (249)
+    ok   mem[$0307]             expected $30 (48) got $30 (48)
+    ok   S                      expected $FF (255) got $FF (255)
+    9/9 checks passed
+[run ] shifts/rotates, BIT, CMP/CPX/CPY, INC/DEC, abs,X across a page: reached done after 199 cycles
+    ok   mem[$0300]             expected $02 (2) got $02 (2)
+    ok   mem[$0301]             expected $05 (5) got $05 (5)
+    ok   mem[$0302]             expected $02 (2) got $02 (2)
+    ok   mem[$0303]             expected $81 (129) got $81 (129)
+    ok   mem[$0304]             expected $30 (48) got $30 (48)
+    ok   mem[$0305]             expected $C0 (192) got $C0 (192)
+    ok   mem[$0306]             expected $C2 (194) got $C2 (194)
+    ok   mem[$0307]             expected $03 (3) got $03 (3)
+    ok   mem[$0308]             expected $80 (128) got $80 (128)
+    ok   mem[$0309]             expected $00 (0) got $00 (0)
+    ok   mem[$030A]             expected $FF (255) got $FF (255)
+    ok   mem[$030B]             expected $5A (90) got $5A (90)
+    ok   mem[$030C]             expected $A5 (165) got $A5 (165)
+    13/13 checks passed
+[run ] cycle counts between opcode fetches (page-cross and branch penalties): reached done after 93 cycles
+    ok   cycles $020B->$0228    expected $37 (55) got $37 (55)
+    ok   cycles $0228->$022C    expected $08 (8) got $08 (8)
+    2/2 checks passed
+CPU tests: 52 checks, 0 failed

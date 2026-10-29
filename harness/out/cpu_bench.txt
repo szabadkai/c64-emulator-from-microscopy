@@ -1,0 +1,3 @@
+netlist CPU alone: 300000 cycles in 5.974 s wall = 50215 cycles/s (5.10% of 0.985 MHz)
+                   5.468 s process CPU time = 54861 cycles/s (5.57% of 0.985 MHz, 1/18.0)
+  3236 transistors after de-duplication; per cycle: 1182.7 group evaluations, 1.3 nodes/group, 36.6 passes; loop-limit hits 0

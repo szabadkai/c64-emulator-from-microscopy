@@ -1,0 +1,84 @@
+
+MODULE c64pla 
+"Created by JED2AHDL ABEL 4.10 on Wed Jul 19 15:37:23 1995 
+
+TITLE 
+'PLA chip in old version of Commodore 64'
+
+        c64pla device 'f100';
+
+"Device is a Signetics/Mullard/Phillips 82S100
+
+
+"Pin and Node Declarations
+          FE,  A13,  A14,  A15               PIN   1, 2, 3, 4;
+          _VA14,  _CHAREN,  _HIRAM,  _LORAM  PIN   5, 6, 7, 8;
+          _CAS,  ROMH,  ROML,  I_O           PIN   9,10,11,12;
+          GR_W,  GND,  CHAROM,  KERNAL       PIN  13,14,15,16;
+          BASIC,  CASRAM,  _OE,  VA12        PIN  17,18,19,20;
+          VA13,  _GAME,  _EXROM,  R__W       PIN  21,22,23,24;
+          _AEC,  BA,  A12,  VCC              PIN  25,26,27,28;
+
+        CASRAM ISTYPE 'Neg';
+        ROMH,ROML,I_O,GR_W,CHAROM,KERNAL,BASIC,CASRAM ISTYPE 'Com';
+        ROMH,ROML,I_O,GR_W,CHAROM,KERNAL,BASIC,CASRAM ISTYPE 'Invert';
+
+        X,K,Z,C,P,U,D = .X.,.K.,.Z.,.C.,.P.,.U.,.D.;
+
+EQUATIONS
+
+Q7 = (_HIRAM & A15 & !A14 & A13 & !_AEC & R__W & !_EXROM & !_GAME 
+             # A15 & A14 & A13 & !_AEC & _EXROM & !_GAME 
+             # _AEC & _EXROM & !_GAME & VA13 & VA12 );
+
+Q6 = (_LORAM & _HIRAM & A15 & !A14 & !A13 & !_AEC & R__W & !_EXROM 
+             # A15 & !A14 & !A13 & !_AEC & _EXROM & !_GAME );
+
+Q5 = (_HIRAM & _CHAREN & A15 & A14 & !A13 & A12 & !_AEC & (BA # !R__W) & (!_EXROM # _GAME ) 
+             # _LORAM & _CHAREN & A15 & A14 & !A13 & A12 & !_AEC & (BA # !R__W) & (!_EXROM # _GAME )
+             # A15 & A14 & !A13 & A12 & !_AEC & (BA # !R__W ) & _EXROM & !_GAME );
+
+Q3 = (_LORAM & !_CHAREN & A15 & A14 & !A13 & A12 & !_AEC & R__W & _GAME 
+             # _HIRAM & !_CHAREN & A15 & A14 & !A13 & A12 & !_AEC & R__W & (!_EXROM # _GAME )
+             # _VA14 & _AEC & _GAME & !VA13 & VA12 
+             # _VA14 & _AEC & !_EXROM & !_GAME & !VA13 & VA12 );
+
+Q2 = (_HIRAM & A15 & A14 & A13 & !_AEC & R__W & (!_EXROM # _GAME ) );
+
+Q1 = (_LORAM & _HIRAM & A15 & !A14 & A13 & !_AEC & R__W & _GAME );
+
+!ROMH = Q7
+!ROMH.OE = _OE;
+
+!ROML = Q6;
+!ROML.OE = _OE;
+
+!I_O = Q5;
+!I_O.OE = _OE;
+
+!GR_W = (!_CAS & A15 & A14 & !A13 & A12 & !_AEC & !R__W );
+!GR_W.OE = _OE;
+
+!CHAROM = Q3;
+!CHAROM.OE = _OE;
+
+!KERNAL = Q2;
+!KERNAL.OE = _OE;
+
+!BASIC = Q1;
+!BASIC.OE = _OE;
+
+!CASRAM = !(_CAS # Q1 # Q2 # Q3 # Q5 # Q6 # Q7
+             # _EXROM & !_GAME & !A15 &  A14
+             # _EXROM & !_GAME & !A15 & !A14 &  A12
+             # _EXROM & !_GAME & !A15 & !A14 &  A13
+             # _EXROM & !_GAME &  A15 & !A14 &  A13 
+             # _EXROM & !_GAME &  A15 &  A14 & !A13 & !A12 );
+!CASRAM.OE = _OE;
+
+
+TEST_VECTORS
+([]->[])
+
+
+END

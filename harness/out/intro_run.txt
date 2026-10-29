@@ -1,0 +1,50 @@
+ROMs: roms/kernal.901227-03.bin, roms/basic.901226-01.bin, roms/characters.901225-01.bin
+frame 110 cycle 2142505: PRG $0801-$157E (3454 bytes) injected, $2D-$32/$AE = $157F; typing RUN<RETURN>
+frame 132 cycle 2574937: typing finished (last key released)
+900 frames written to out/intro/
+state saved to out/intro_f900.state (cycle 17690400, frame 900)
+audio written to out/intro.wav
++----------------------------------------+
+|-(((((("     .((((((#      (((((($      |
+|########?<OGCA#FBDHJEOGA@@@@@@@@@@@@@@@@|
+|@@@@@@##@@@@##@@@@##@@@@##@@@@##@@@@#@@@|
+|@@@@@@@@@@@@@@@@@@@@@@@@@F@@@<#F@@@##>@@|
+|@###@@@###@@@<>>@@@@@@@@@@@@@@@@@@@@@@@@|
+|@@@@@@@8@@@@@X#@@@@X#@@@@X#@@@@X>@@@@<L@|
+|@@@@#@@@@@@@@@@@@CFILPSVY#<"%(+.1369<?##|
+|########################################|
+|########################################|
+|###?<9631.+(%"<#YVSPLIFC@###############|
+|######?<9742/-+(&$" ^#ZXVUSQPOMLKJHGFFED|
+|CCBBBAAAAAAABBBCCDEFFGHJKLMOPQSUVXZ#^ "$|
+|&(+-/2479<?#####################@@@@@@@@|
+|@@@@@@@@@@@@@##<@@@###@@@###@@@###@@@##<|
+|@@@#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@><#|
+|@@@###@@@<##@@@F##@@@#<#@@@@@@@@@@@@@@@@|
+|@@@@@@@@@@@@@@@X@@@@@#>@@@@X#@@@@X<@@@@X|
+|F@@@@N#@@@@@@@@@@@@@@@@@"G###-R##R##@###|
+|#EDFEDF#Y#### #F #F #F"<=@E#(X##M#G#DBJ#|
+|AM#F)EEV"K##### @#DNW##-R#)GIP"#NW#60#L]|
+|Q##"@#V#N##MQ#NX#"@#V##)!NW#M#G)R#K#NW#-|
+|R#)GIP#W#6/#Q]Q###"@#B##%SEB#XMQ#NX#"@#B|
+|##%SEB#F#)#MO#-R#)GIPL"#60#K]Q####B###P#|
+|MQ#NX##B###C#W#-R#)GIP"#NW###6/#K]Q####$|
+|###JMQ#NX##$##"E####)P]V#)#MQ# OH #Q +S |
++----------------------------------------+
+watch $080D: first opcode fetch at cycle 2535671 (frame 130, line 0, cycle 48)
+watch $0800: first opcode fetch at cycle 3123327 (frame 159, line 280, cycle 40)
+cycles run          : 17690400 (900.00 frames, 17.955 s emulated); machine cycle now 17690400, frame 900
+wall time           : 341.038 s -> 51872 cycles/s = 5.26% of real time (1/19.0)
+process CPU time    : 301.205 s -> 58732 cycles/s = 5.96% of real time (1/16.8)
+last full frame     : badlines 36, BA low 4012 cycles, CPU stalled (RDY low on read) 3899, VIC-owned PHI2 (AEC low) 3296, /IRQ asserted 65 cycles, IRQs 1, NMIs 0, SID writes 18
+interrupts taken    : IRQ 567 (first at cycle 2060444), NMI 236 (first at cycle 3185162)
+VIC                 : frame 900 line 311 cycle 63, raster IRQs latched 900
+CIA1                : TA latch $4025 underflows 1071, IRQs 66; CIA2: TA latch $4CC7 underflows 236, NMIs 236; RAM[$02A6] (KERNAL PAL flag) = 1
+SID                 : 6581, 12913 writes, 10700 reads, 791828 samples (879.8 per frame); writes/frame since the first write: avg 14.34 min 0 max 36 over 899 frames
+SID writes/frame    : 0:161 1:1 2:1 9:1 11:3 12:7 13:4 14:27 15:2 16:100 17:11 18:551 19:17 20:10 21:2 36:1  (value:frames)
+6510 port           : DDR=$2F DATA=$35 pins=$35; RAM[$00]=$2F RAM[$01]=$35
+CPU registers       : PC=07F7 A=FF X=80 Y=10 S=F3 P=24
+netlist             : 3236 transistors; per cycle 1137.5 group evals, 1.27 nodes/group, 35.7 passes, loop-limit hits 0
+real 341.11
+user 293.52
+sys 7.68

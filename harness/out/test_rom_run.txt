@@ -1,0 +1,40 @@
+KERNAL: built-in self-written test ROM
+screenshot written to out/test.png
++----------------------------------------+
+|                                        |
+|            NETLIST 6502 OK             |
+|                                        |
+|  CIA1 TIMER IRQS $0076                 |
+|  RASTER IRQS     $00C5                 |
+|  MAIN LOOP       $0D0E                 |
+|                                        |
+|  PORT $00=2F $01=36                    |
+|                                        |
+|                                        |
+|  ABCDEFGHIJKLMNOPQRSTUVWXYZ            |
+|  0123456789 !#$%&()*+,-./:;=?          |
+|                                        |
+|  SELF-WRITTEN TEST ROM, NO CBM CODE    |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
++----------------------------------------+
+cycles run          : 1965600 (100.00 frames, 1.995 s emulated); machine cycle now 1965600, frame 100
+wall time           : 48.880 s -> 40213 cycles/s = 4.08% of real time (1/24.5)
+process CPU time    : 39.065 s -> 50317 cycles/s = 5.11% of real time (1/19.6)
+last full frame     : badlines 25, BA low 1075 cycles, CPU stalled (RDY low on read) 1073, VIC-owned PHI2 (AEC low) 1000, /IRQ asserted 111 cycles, IRQs 3, NMIs 0, SID writes 0
+interrupts taken    : IRQ 313 (first at cycle 24686), NMI 0 (first at cycle -1)
+VIC                 : frame 100 line 311 cycle 63, raster IRQs latched 198
+CIA1                : TA latch $4025 underflows 118, IRQs 118; CIA2: TA latch $FFFF underflows 0, NMIs 0; RAM[$02A6] (KERNAL PAL flag) = 0
+SID                 : 6581, 0 writes, 0 reads, 87981 samples (879.8 per frame)
+6510 port           : DDR=$2F DATA=$36 pins=$36; RAM[$00]=$2F RAM[$01]=$36
+CPU registers       : PC=E11E A=76 X=20 Y=02 S=FF P=20
+netlist             : 3236 transistors; per cycle 1145.1 group evals, 1.27 nodes/group, 35.4 passes, loop-limit hits 0

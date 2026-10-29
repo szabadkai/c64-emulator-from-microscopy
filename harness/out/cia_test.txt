@@ -1,0 +1,45 @@
+[start delay] STA CRA ($01) then read TA every cycle
+    ok   read 1 cycle after the write (keep)                        want   100 got   100
+    ok   read 2 cycles after (keep)                                 want   100 got   100
+    ok   read 3 cycles after (count)                                want    99 got    99
+    ok   read 4 cycles after (count)                                want    98 got    98
+[stop delay] STA CRA ($00) on a running timer
+    ok   read 1 after stop (count)                                  want    95 got    95
+    ok   read 2 after stop (count)                                  want    94 got    94
+    ok   read 3 after stop (keep)                                   want    94 got    94
+    ok   read 4 after stop (keep)                                   want    94 got    94
+[PHI2 continuous, latch 2] read pattern 2-2-1 (no zero), period latch+1
+    ok   zeros read in 9 cycles                                     want     0 got     0
+    ok   ones read in 9 cycles (one per period of 3)                want     3 got     3
+[period $4CC7] underflows of a continuous PHI2 timer
+    ok   cycles between underflows ($4CC7 + 1 = one PAL frame)      want 19656 got 19656
+    ok   first underflow L+1 cycles after the STA (start delay 2)   want 19656 got 19656
+[ICR01] reading the ICR around the underflow (latch 4, IMR TA)
+    ok   ICR read at t-1 returns                                    want     0 got     0
+    ok   ICR read at t-1: interrupt line asserted                   want     1 got     1
+    ok   ICR read at t+0 returns                                    want     1 got     1
+    ok   ICR read at t+0: interrupt line asserted                   want     0 got     0
+    ok   ICR read at t+1 returns                                    want   129 got   129
+    ok   ICR read at t+1: interrupt line asserted                   want     1 got     1
+[ONESHOT] CRA around the underflow, timer stops
+    ok   CRA at t-1                                                 want     9 got     9
+    ok   CRA at t                                                   want     8 got     8
+    ok   counter after one-shot underflow (reloaded, stopped)       want     4 got     4
+[force load] running timer, latch 50, STA CRA $11
+    ok   read 1 after force load                                    want    50 got    50
+    ok   read 2 (next clock removed)                                want    50 got    50
+    ok   read 3                                                     want    49 got    49
+[LOADTH] latch high byte loads the counter only while stopped
+    ok   low byte write while stopped: counter unchanged            want    52 got    52
+    ok   high byte write while stopped: counter = latch             want  4096 got  4096
+    ok   high byte write while running: counter keeps counting      want    15 got    15
+[IMR] enabling a pending source raises the IRQ, clearing IMR does not drop it
+    ok   flag pending, masked: no IRQ                               want     0 got     0
+    ok   IRQ after setting the IMR bit                              want     1 got     1
+    ok   still asserted after clearing the IMR bit                  want     1 got     1
+    ok   ICR read                                                   want   129 got   129
+    ok   released after the ICR read                                want     0 got     0
+[cascade] TB counts TA underflows, both latches 2
+    ok   TB reads 0 (zeros visible only in cascade mode), per 2 periods want     4 got     4
+    ok   TB reads 2, per 2 periods (latch value plus reload)        want     8 got     8
+CIA tests: 34 checks, 0 failed

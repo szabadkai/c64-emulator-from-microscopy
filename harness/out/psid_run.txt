@@ -1,0 +1,18 @@
+ROMs: roms/kernal.901227-03.bin, roms/basic.901226-01.bin, roms/characters.901225-01.bin
+frame 110 cycle 2142505: PSID v2 "Minimalistic tune" by Sami "proton" Louko: data $0A00-$1181, init $0A00, play $0A03, song 1/1, speed VBI (raster IRQ line 48, 50 Hz), flags $0014 (PAL, 6581); driver at $0334-$0371 via ($0314)
+audio written to out/psid.wav
+cycles run          : 5896800 (300.00 frames, 5.985 s emulated); machine cycle now 5896800, frame 300
+wall time           : 120.042 s -> 49123 cycles/s = 4.99% of real time (1/20.1)
+process CPU time    : 104.268 s -> 56554 cycles/s = 5.74% of real time (1/17.4)
+last full frame     : badlines 25, BA low 1075 cycles, CPU stalled (RDY low on read) 1065, VIC-owned PHI2 (AEC low) 1000, /IRQ asserted 45 cycles, IRQs 1, NMIs 0, SID writes 18
+interrupts taken    : IRQ 197 (first at cycle 2060444), NMI 0 (first at cycle -1)
+VIC                 : frame 300 line 311 cycle 63, raster IRQs latched 301
+CIA1                : TA latch $4025 underflows 353, IRQs 6; CIA2: TA latch $FFFF underflows 0, NMIs 0; RAM[$02A6] (KERNAL PAL flag) = 1
+SID                 : 6581, 3368 writes, 2796 reads, 263943 samples (879.8 per frame); writes/frame from the autostart frame on: avg 17.63 min 4 max 20 over 190 frames
+SID writes/frame    : 4:1 12:8 13:1 14:1 16:1 18:177 20:1  (value:frames)
+6510 port           : DDR=$2F DATA=$37 pins=$37; RAM[$00]=$2F RAM[$01]=$37
+CPU registers       : PC=E5D6 A=00 X=00 Y=0A S=F3 P=22
+netlist             : 3236 transistors; per cycle 1179.6 group evals, 1.27 nodes/group, 36.0 passes, loop-limit hits 0
+real 120.82
+user 101.33
+sys 2.94

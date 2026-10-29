@@ -1,0 +1,42 @@
+ROMs: roms/kernal.901227-03.bin, roms/basic.901226-01.bin, roms/characters.901225-01.bin
+frame 110: "READY." found on screen, stopping after one more frame (so the frame buffer shows it)
+screenshot written to out/basic_ready.png
++----------------------------------------+
+|                                        |
+|    **** COMMODORE 64 BASIC V2 ****     |
+|                                        |
+| 64K RAM SYSTEM  38911 BASIC BYTES FREE |
+|                                        |
+|READY.                                  |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
++----------------------------------------+
+cycles run          : 2162161 (110.00 frames, 2.195 s emulated); machine cycle now 2162161, frame 111
+wall time           : 53.619 s -> 40324 cycles/s = 4.09% of real time (1/24.4)
+process CPU time    : 43.736 s -> 49437 cycles/s = 5.02% of real time (1/19.9)
+last full frame     : badlines 25, BA low 1075 cycles, CPU stalled (RDY low on read) 1062, VIC-owned PHI2 (AEC low) 1000, /IRQ asserted 519 cycles, IRQs 2, NMIs 0, SID writes 0
+interrupts taken    : IRQ 7 (first at cycle 2060444), NMI 0 (first at cycle -1)
+VIC                 : frame 111 line 0 cycle 1, raster IRQs latched 111
+CIA1                : TA latch $4025 underflows 126, IRQs 7; CIA2: TA latch $FFFF underflows 0, NMIs 0; RAM[$02A6] (KERNAL PAL flag) = 1
+SID                 : 6581, 1 writes, 0 reads, 96779 samples (879.8 per frame); writes/frame from the first write on: avg 0.01 min 0 max 1 over 110 frames
+SID writes/frame    : 0:109 1:1  (value:frames)
+6510 port           : DDR=$2F DATA=$37 pins=$37; RAM[$00]=$2F RAM[$01]=$37
+CPU registers       : PC=E5D1 A=00 X=00 Y=0A S=F3 P=22
+netlist             : 3236 transistors; per cycle 1181.1 group evals, 1.28 nodes/group, 36.2 passes, loop-limit hits 0

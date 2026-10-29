@@ -1,0 +1,85 @@
+{
+ "region": [
+  13900,
+  12800,
+  1400,
+  1100
+ ],
+ "train_tile": [
+  2600,
+  4200,
+  1200,
+  1000
+ ],
+ "um_per_px": 0.317,
+ "region_um": [
+  443.8,
+  348.7
+ ],
+ "local_shift_region": {
+  "dx": -0.08,
+  "dy": 0.53,
+  "resp": 0.115,
+  "applied": true
+ },
+ "local_shift_train": {
+  "dx": 0.08,
+  "dy": 2.87,
+  "resp": 0.055,
+  "applied": true
+ },
+ "metal_vs_tommi": {
+  "strict": {
+   "iou": 0.763,
+   "precision": 0.8977,
+   "recall": 0.8357
+  },
+  "ignoring_2px_boundary_band": {
+   "iou": 0.8454,
+   "precision": 0.9505,
+   "recall": 0.8843
+  }
+ },
+ "nonmetal_clusters": {
+  "diffusion?": {
+   "L": 61.5,
+   "a": 125.9,
+   "b": 126.0,
+   "area_frac": 0.2722
+  },
+  "field?": {
+   "L": 32.9,
+   "a": 132.6,
+   "b": 118.9,
+   "area_frac": 0.1657
+  },
+  "poly?": {
+   "L": 59.8,
+   "a": 123.9,
+   "b": 136.8,
+   "area_frac": 0.0667
+  }
+ },
+ "contacts_detected": 266,
+ "netlist": {
+  "scale": 1.0,
+  "lmax_units": 42.018927444794954,
+  "conn": 8,
+  "components": {
+   "metal": 126,
+   "poly": 479,
+   "diff": 619,
+   "channels": 14,
+   "contacts": 263
+  },
+  "contacts_mp": 0,
+  "contacts_md": 0,
+  "contacts_floating": 263,
+  "degenerate": 0,
+  "vss_vcc_short": false,
+  "transistors": 14,
+  "nodes": 1226,
+  "metal_nets_from_reference_map": 51,
+  "metal_nets_from_segmentation": 126
+ }
+}

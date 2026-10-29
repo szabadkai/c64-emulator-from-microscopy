@@ -1,0 +1,44 @@
+ROMs: roms/kernal.901227-03.bin, roms/basic.901226-01.bin, roms/characters.901225-01.bin
+frame 110 cycle 2142505: typing "PRINT 2+2\n"
+frame 168 cycle 3282553: typing finished (last key released)
+frame 179: " 4" found on screen, stopping after one more frame (so the frame buffer shows it)
+screenshot written to out/basic_print.png
++----------------------------------------+
+|                                        |
+|    **** COMMODORE 64 BASIC V2 ****     |
+|                                        |
+| 64K RAM SYSTEM  38911 BASIC BYTES FREE |
+|                                        |
+|READY.                                  |
+|PRINT 2+2                               |
+| 4                                      |
+|                                        |
+|READY.                                  |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
++----------------------------------------+
+cycles run          : 3518425 (179.00 frames, 3.571 s emulated); machine cycle now 3518425, frame 180
+wall time           : 59.802 s -> 58834 cycles/s = 5.97% of real time (1/16.7)
+process CPU time    : 53.806 s -> 65391 cycles/s = 6.64% of real time (1/15.1)
+last full frame     : badlines 25, BA low 1075 cycles, CPU stalled (RDY low on read) 1064, VIC-owned PHI2 (AEC low) 1000, /IRQ asserted 220 cycles, IRQs 1, NMIs 0, SID writes 0
+interrupts taken    : IRQ 89 (first at cycle 2060444), NMI 0 (first at cycle -1)
+VIC                 : frame 180 line 0 cycle 1, raster IRQs latched 180
+CIA1                : TA latch $4025 underflows 208, IRQs 89; CIA2: TA latch $FFFF underflows 0, NMIs 0; RAM[$02A6] (KERNAL PAL flag) = 1
+SID                 : 6581, 1 writes, 0 reads, 157486 samples (879.8 per frame); writes/frame since the first write: avg 0.01 min 0 max 1 over 179 frames
+SID writes/frame    : 0:178 1:1  (value:frames)
+6510 port           : DDR=$2F DATA=$37 pins=$37; RAM[$00]=$2F RAM[$01]=$37
+CPU registers       : PC=E5D1 A=00 X=00 Y=0A S=F3 P=22
+netlist             : 3236 transistors; per cycle 1179.8 group evals, 1.28 nodes/group, 36.1 passes, loop-limit hits 0

@@ -1,0 +1,185 @@
+./sidtest
+sidtest - MOS 6581/8580 SID emulation tests (PAL 985248 Hz, 44100 Hz output)
+
+[1] Pitch accuracy (6581): f = reg * 985248 / 2^24
+    wave      reg      expect Hz    meas Hz     err %
+    triangle  $0400      60.135     60.135   -0.0000
+    triangle  $0800     120.270    120.270   +0.0001
+    triangle  $1CD6     433.511    433.511   +0.0000
+    triangle  $4000     962.156    962.156   -0.0000
+    triangle  $9000    2164.852   2164.852   +0.0000
+    triangle  $F000    3608.086   3608.086   +0.0000
+    sawtooth  $0400      60.135     60.135   -0.0000
+    sawtooth  $0800     120.270    120.269   -0.0001
+    sawtooth  $1CD6     433.511    433.511   +0.0000
+    sawtooth  $4000     962.156    962.156   -0.0000
+    sawtooth  $9000    2164.852   2164.846   -0.0003
+    sawtooth  $F000    3608.086   3608.079   -0.0002
+    pulse     $0400      60.135     60.135   -0.0001
+    pulse     $0800     120.270    120.270   +0.0000
+    pulse     $1CD6     433.511    433.511   +0.0001
+    pulse     $4000     962.156    962.156   -0.0000
+    pulse     $9000    2164.852   2164.856   +0.0002
+    pulse     $F000    3608.086   3608.095   +0.0002
+  PASS  pitch: worst error 0.0003% (tolerance 0.5%)
+    RMS of waveforms (T,S,P,N,TS,PT,PS,PTS) at env max: 3383 3337 5934 3192 2224 3789 4513 2507 
+    -> out/waveforms_6581.wav
+
+[1] Pitch accuracy (8580): f = reg * 985248 / 2^24
+    wave      reg      expect Hz    meas Hz     err %
+    triangle  $0400      60.135     60.135   -0.0000
+    triangle  $0800     120.270    120.270   +0.0000
+    triangle  $1CD6     433.511    433.511   -0.0000
+    triangle  $4000     962.156    962.156   -0.0000
+    triangle  $9000    2164.852   2164.852   +0.0000
+    triangle  $F000    3608.086   3608.087   +0.0000
+    sawtooth  $0400      60.135     60.135   +0.0000
+    sawtooth  $0800     120.270    120.270   +0.0000
+    sawtooth  $1CD6     433.511    433.511   +0.0000
+    sawtooth  $4000     962.156    962.156   -0.0000
+    sawtooth  $9000    2164.852   2164.850   -0.0001
+    sawtooth  $F000    3608.086   3608.082   -0.0001
+    pulse     $0400      60.135     60.135   -0.0001
+    pulse     $0800     120.270    120.270   +0.0000
+    pulse     $1CD6     433.511    433.511   +0.0001
+    pulse     $4000     962.156    962.156   -0.0000
+    pulse     $9000    2164.852   2164.856   +0.0002
+    pulse     $F000    3608.086   3608.095   +0.0002
+  PASS  pitch: worst error 0.0002% (tolerance 0.5%)
+    RMS of waveforms (T,S,P,N,TS,PT,PS,PTS) at env max: 3457 3411 5934 3264 2578 3824 4611 2813 
+    -> out/waveforms_8580.wav
+
+[2] Envelope timing vs datasheet (6581; times converted to a 1 MHz clock for comparison)
+    rate | attack: meas(cyc) exact(cyc) ms@1MHz  sheet | decay: meas(cyc) exact(cyc) ms@1MHz sheet | release: meas(cyc) ms@1MHz
+       0 |      2295      2295       2.3      2 |       6804      6804       6.8      6 |       6803       6.8
+       1 |      8160      8160       8.2      8 |      24192     24192      24.2     24 |      24184      24.2
+       2 |     16065     16065      16.1     16 |      47628     47628      47.6     48 |      47574      47.6
+       3 |     24225     24225      24.2     24 |      71820     71820      71.8     72 |      71770      71.8
+       4 |     37998     37995      38.0     38 |     112644    112644     112.6    114 |     112545     112.5
+       5 |     56108     56100      56.1     56 |     166322    166320     166.3    168 |     166205     166.2
+       6 |     68096     68085      68.1     68 |     201856    201852     201.9    204 |     201664     201.7
+       7 |     79819     79815      79.8     80 |     236645    236628     236.6    240 |     236569     236.6
+       8 |     99960     99960     100.0    100 |     296352    296352     296.4    300 |     296136     296.1
+       9 |    249185    249135     249.2    250 |     738649    738612     738.6    750 |     738649     738.6
+      10 |    498370    498270     498.4    500 |    1477298   1477224    1477.3   1500 |    1476322    1476.3
+      11 |    797160    797130     797.2    800 |    2363400   2363256    2363.4   2400 |    2362425    2362.4
+      12 |    996496    996285     996.5   1000 |    2953864   2953692    2953.9   3000 |    2952888    2952.9
+      13 |   2988756   2988600    2988.8   3000 |    8860860   8860320    8860.9   9000 |    8859396    8859.4
+      14 |   4981260   4980660    4981.3   5000 |   14766880  14766192   14766.9  15000 |   14765660   14765.7
+      15 |   7970193   7969005    7970.2   8000 |   23627394  23625756   23627.4  24000 |   23625441   23625.4
+  PASS  envelope: attack = 255*period, decay/release = 756*period (exp. counter) within one period
+  PASS  envelope: all 48 times within 20% of datasheet table (worst 14.7%; rate 0 is +15% on real chips too)
+    ENV3 per frame (A=8 D=9 S=A R=9, gate off at frame 60):
+    00 32 64 96 C8 FA ED D9 C5 B1 AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA
+    AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA
+    AA 96 81 6D 5B 51 47 3D 35 30 2B 26 21 1C 19 16 14 11 0F 0D 0C 0B 09 08 07 06 05 05 04 03
+    03 02 01 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    
+  PASS  ENV3 trajectory: attack peak at frame 5 (~100 ms), sustain $AA, end of release $00 -> out/env3_trajectory.csv
+
+[3] ADSR delay bug (15-bit rate counter must wrap when the period is lowered)
+    no hard restart: 200 trials, delay min 1.59 ms, mean 17.30 ms, max 33.24 ms (1567..32751 cycles)
+  PASS  delay bug: attack delayed up to 33.24 ms (theory: up to 32768 cycles = 33.26 ms)
+    with 2-frame hard restart ($0F00): max delay 9 cycles
+  PASS  hard restart: attack starts within 9 cycles (<= 9) in all 200 trials
+
+[4] Noise generator
+  PASS  LFSR period 8388607 (expect 2^23-1 = 8388607)
+    OSC3 noise: mean 127.52 (ideal 127.5), chi^2(255 dof) = 254.3, worst bit bias 0.0033
+  PASS  noise OSC3 values uniformly distributed
+    octave band levels (dB, rel.): 125Hz:+0.5 250Hz:+0.8 500Hz:+0.7 1000Hz:+0.0 2000Hz:-1.7 4000Hz:-4.5 8000Hz:-6.0
+  PASS  noise spectrum broad: octave bands 125 Hz-8 kHz within 6.8 dB (LFSR tap correlation gives a slight tilt), flatness 0.85 -> out/noise_6581.wav
+    lock-up: distinct OSC3 values before 253, after noise+saw 1 (value $00), after TEST 253
+  PASS  noise lock-up after combining with saw, recovered by TEST bit
+
+[5] Filter cutoff (-3 dB, LP, res 0) measured with noise, 6581
+    FC     model Hz   meas Hz   err%
+    $000     219.6     219.9   +0.1
+    $080     227.7     228.6   +0.4
+    $100     248.1     249.1   +0.4
+    $180     306.4     306.5   +0.1
+    $200     423.6     423.7   +0.0
+    $280     772.6     771.9   -0.1
+    $300    1545.4    1545.2   -0.0
+    $380    3199.5    3200.6   +0.0
+    $3FF    5933.1    5933.4   +0.0
+    $400    4622.4    4624.0   +0.0
+    $480    7435.4    7437.8   +0.0
+    $500    9963.1    9965.7   +0.0
+    $580   12181.2   12190.9   +0.1
+    $600   13628.3   13624.0   -0.0
+    $680   15032.9   15026.8   -0.0
+    $700   16080.4   16019.8   -0.4
+    $780   16985.1   16959.7   -0.1
+    $7FF   17771.2   17751.1   -0.1
+  PASS  6581: measured -3 dB points agree with the cutoff model within 10% -> out/filter_curve_6581.csv
+  PASS  6581: FC=$000 cutoff 220 Hz (published measurements ~220 Hz)
+  PASS  6581: flat bottom, fc($100)/fc($000) = 1.13
+  PASS  6581: steep rise, fc($600)/fc($200) = 32.2
+  PASS  6581: DAC kink at $3FF->$400 (5933 -> 4624 Hz)
+  PASS  6581: FC=$7FF cutoff 17751 Hz (>12 kHz)
+    resonance: LP peak gain at FC=$2AB: res0 +0.0 dB, res15 +7.1 dB
+  PASS  6581: resonance raises the peak by 7.1 dB
+
+[5] Filter cutoff (-3 dB, LP, res 0) measured with noise, 8580
+    FC     model Hz   meas Hz   err%
+    $000      30.0      29.0   -3.4
+    $080     778.5     778.5   +0.0
+    $100    1527.0    1527.1   +0.0
+    $180    2275.5    2275.7   +0.0
+    $200    3024.0    3023.2   -0.0
+    $280    3772.5    3772.6   +0.0
+    $300    4520.9    4520.7   -0.0
+    $380    5269.4    5270.5   +0.0
+    $3FF    6012.1    6013.5   +0.0
+    $400    6017.9    6018.9   +0.0
+    $480    6766.4    6767.3   +0.0
+    $500    7514.9    7514.1   -0.0
+    $580    8263.4    8262.6   -0.0
+    $600    9011.9    9010.7   -0.0
+    $680    9760.4    9760.7   +0.0
+    $700   10508.9   10507.0   -0.0
+    $780   11257.4   11258.4   +0.0
+    $7FF   12000.0   12000.5   +0.0
+  PASS  8580: measured -3 dB points agree with the cutoff model within 10% -> out/filter_curve_8580.csv
+  PASS  8580: near-linear curve, R^2 = 1.0000, slope 5.85 Hz/step, fc($7FF) = 12000 Hz
+    resonance: LP peak gain at FC=$0A6: res0 +0.0 dB, res15 +8.4 dB
+  PASS  8580: resonance raises the peak by 8.4 dB
+
+[6] Hard sync and ring modulation (6581)
+    f1 = 433.5 Hz, f3 = 150.3 Hz; sidebands f1+-f3: off -119.9 dB, on -0.9 dB; carrier: off -0.1 dB, on -115.0 dB (re total)
+  PASS  ring mod creates f1+-f3 sidebands (+119 dB) and suppresses the carrier (-115 dB)
+    sync: saw 481.08 Hz synced to 165.37 Hz -> measured fundamental: off 480.90 Hz, on 165.35 Hz
+  PASS  hard sync: output period follows the sync source (voice 1 <- voice 3)
+
+[7] Musical test: 3-voice arpeggio/bass/melody, PWM, resonant LP sweep
+  PASS  6581 demo: 9.98 s, peak -4.6 dBFS, RMS -17.6 dBFS, 0 clipped -> out/demo_6581.wav
+  PASS  8580 demo: 9.98 s, peak -2.8 dBFS, RMS -16.7 dBFS, 0 clipped -> out/demo_8580.wav
+
+[8] Speed (demo tune, all voices + filter, 44.1 kHz output; single thread)
+    per frame (19656 cycles)    132.45 Mcycles/s  =  134.4x real time (CPU time; wall 134.1x)
+    per raster line (63)        130.20 Mcycles/s  =  132.2x real time (CPU time; wall 131.5x)
+    per cycle (1)                57.40 Mcycles/s  =   58.3x real time (CPU time; wall 58.2x)
+  PASS  speed: 134x real time with batched clocking (target >= 20x)
+
+[9] 4-bit $D418 volume digi (DC level change on volume writes)
+    1 kHz digi level: 6581 -15.0 dBFS, 8580 -41.0 dBFS
+  PASS  volume-register digis audible on 6581, ~26 dB quieter on 8580
+
+[10] Resampling quality: saw at exactly 1024 cycles/period (962.16 Hz)
+    inharmonic (alias) energy 20 Hz-20 kHz re harmonic energy: resampler -81.4 dB, naive point sampling -16.1 dB
+  PASS  anti-aliased resampling: alias floor -81.4 dB (naive -16.1 dB)
+
+[11] Register reads: POTX/POTY, OSC3, ENV3, write-only data bus fade
+    6581: POT $FF/$FF (set $40/$80 -> $40/$80), OSC3 saw steps ok=1, bus: $5A, +2000cyc $5A, +22000cyc $00
+  PASS  6581 register reads (pots, OSC3, data-bus fade after ~7000 cycles)
+    8580: POT $FF/$FF (set $40/$80 -> $40/$80), OSC3 saw steps ok=1, bus: $5A, +2000cyc $5A, +22000cyc $5A
+  PASS  8580 register reads (pots, OSC3, data-bus fade slow)
+
+[12] Savestates: save mid-tune, continue vs. load into a fresh instance
+    6581: N = 2705217 cycles, state 2814 bytes (453 pending samples), M = 2955711 cycles -> 132751 samples (RMS 3939)
+  PASS  6581 savestate: continuation after load is bit-identical (132751 samples)
+    8580: N = 2705217 cycles, state 2814 bytes (453 pending samples), M = 2955711 cycles -> 132751 samples (RMS 4793), loaded into a 6581/48 kHz instance
+  PASS  8580 savestate: continuation after load is bit-identical (132751 samples)
+
+32 passed, 0 failed (3.5 s)

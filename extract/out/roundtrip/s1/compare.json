@@ -1,0 +1,83 @@
+{
+ "ext": "out/roundtrip/s1/netlist.json",
+ "anchored": {
+  "gt_transistors": 3510,
+  "ext_transistors": 3493,
+  "matched": 3492,
+  "recall_pct": 99.49,
+  "precision_pct": 99.97,
+  "ext_devices_with_unmapped_nodes": 0,
+  "gt_pullups": 1018,
+  "ext_pullups": 1017,
+  "pullups_matched": 1017,
+  "nodes_mapped": 1701,
+  "gt_nodes": 1704,
+  "ext_nodes": 1701,
+  "anchors_used": 36,
+  "wl_seeded_nodes": 332,
+  "forced_choices": 21,
+  "node_agreement_with_oracle_pct": 100.0
+ },
+ "oracle": {
+  "gt_transistors": 3510,
+  "ext_transistors": 3493,
+  "matched": 3492,
+  "recall_pct": 99.49,
+  "precision_pct": 99.97,
+  "ext_devices_with_unmapped_nodes": 0,
+  "gt_pullups": 1018,
+  "ext_pullups": 1017,
+  "pullups_matched": 1017,
+  "nodes_mapped": 1704,
+  "gt_nodes": 1704,
+  "ext_nodes": 1701
+ },
+ "oracle_missing_gt": [
+  "t3",
+  "t7",
+  "t965",
+  "t65",
+  "t364",
+  "t576",
+  "t697",
+  "t947",
+  "t1358",
+  "t1445",
+  "t1670",
+  "t2083",
+  "t2125",
+  "t2277",
+  "t2730",
+  "t2863",
+  "t3215",
+  "t3227"
+ ],
+ "oracle_extra_ext": [
+  "t1866"
+ ],
+ "scale_px_per_unit": 1.0,
+ "um_per_px": 0.444,
+ "image_px": [
+  9824,
+  8986
+ ],
+ "extract_meta": {
+  "scale": 1.0,
+  "lmax_units": 26.0,
+  "conn": 8,
+  "components": {
+   "metal": 844,
+   "poly": 2634,
+   "diff": 4596,
+   "channels": 4510,
+   "contacts": 3250
+  },
+  "contacts_mp": 1536,
+  "contacts_md": 1714,
+  "contacts_floating": 0,
+  "degenerate": 3,
+  "vss_vcc_short": false,
+  "seconds": 158.5
+ },
+ "seconds": 245.4
+}

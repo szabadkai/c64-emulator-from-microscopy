@@ -1,0 +1,33 @@
+.DS_Store
+
+# Build products (see each Makefile's clean target)
+build/
+logs/
+*.o
+*.dSYM/
+sid/sidtest
+vic2/victest
+cpu6510/lockstep
+cpu6510/boardstep
+netcomp/nodestep
+netcomp/lstep
+netcomp/bench_ccpu
+netcomp/bench_stats
+netcomp/bench_pgo
+netcomp/statetest
+netcomp/cboard
+netcomp/orderexp
+netcomp/ldiverge
+netcomp/ldebug
+harness/c64
+harness/c64player
+harness/out/full/c64_ref
+demo/tools/mkvideo
+
+# Per-frame dumps from full intro runs (regenerate with the commands in demo/FIDELITY.md)
+harness/out/*/frames/
+
+# Third-party downloads (die shots, visual6502 clone); sources listed in extract/README.md
+extract/data/
+__pycache__/
+*.pyc

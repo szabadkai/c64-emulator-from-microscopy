@@ -1,0 +1,20 @@
+ROMs: roms/kernal.901227-03.bin, roms/basic.901226-01.bin, roms/characters.901225-01.bin
+frame 110 cycle 2142505: PRG $0801-$157E (3454 bytes) injected, $2D-$32/$AE = $157F; typing RUN<RETURN>
+frame 132 cycle 2574937: typing finished (last key released)
+3750 frames written to out/compiled/frames/
+audio written to out/compiled/intro_compiled.wav
+cycles run          : 73710000 (3750.00 frames, 74.814 s emulated); machine cycle now 73710000, frame 3750
+wall time           : 493.723 s -> 149294 cycles/s = 15.15% of real time (1/6.6)
+process CPU time    : 481.762 s -> 153001 cycles/s = 15.53% of real time (1/6.4)
+last full frame     : badlines 35, BA low 4030 cycles, CPU stalled (RDY low on read) 3894, VIC-owned PHI2 (AEC low) 3312, /IRQ asserted 67 cycles, IRQs 1, NMIs 0, SID writes 18
+interrupts taken    : IRQ 3416 (first at cycle 2060444), NMI 236 (first at cycle 3185162)
+VIC                 : frame 3750 line 311 cycle 63, raster IRQs latched 3750
+CIA1                : TA latch $4025 underflows 4483, IRQs 66; CIA2: TA latch $4CC7 underflows 236, NMIs 236; RAM[$02A6] (KERNAL PAL flag) = 1
+SID                 : 6581, 60994 writes, 50231 reads, 3299283 samples (879.8 per frame); writes/frame from the autostart frame on: avg 16.75 min 0 max 36 over 3640 frames
+SID writes/frame    : 0:53 2:1 9:1 11:3 12:160 13:5 14:291 15:4 16:715 17:11 18:2366 19:17 20:10 21:2 36:1  (value:frames)
+6510 port           : DDR=$2F DATA=$35 pins=$35; RAM[$00]=$2F RAM[$01]=$35
+CPU registers       : PC=07EF A=00 X=02 Y=33 S=F3 P=26
+CPU core            : compiled netlist (node-identical to netsim); per cycle 0.0 passes, 0.0 queue entries, 0.0 node changes, loop-limit hits 0
+real 494.29
+user 474.88
+sys 6.88

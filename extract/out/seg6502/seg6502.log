@@ -1,0 +1,93 @@
+{
+ "k": 10,
+ "cluster_to_class": [
+  "metal",
+  "metal",
+  "metal",
+  "poly(exposed)",
+  "metal",
+  "metal",
+  "field",
+  "metal",
+  "metal",
+  "diffusion(exposed)"
+ ],
+ "scores": {
+  "metal (signal+power)": {
+   "iou": 0.7325,
+   "precision": 0.7625,
+   "recall": 0.9491
+  },
+  "metal, signal nets only (power-bus area excluded)": {
+   "iou": 0.6651,
+   "precision": 0.6664,
+   "recall": 0.997
+  },
+  "poly, exposed (not under metal)": {
+   "iou": 0.1686,
+   "precision": 0.4859,
+   "recall": 0.2053
+  },
+  "diffusion, exposed (not under metal/poly)": {
+   "iou": 0.0681,
+   "precision": 0.3658,
+   "recall": 0.0772
+  }
+ }
+}
+{
+ "scores": {
+  "metal (signal+power)": {
+   "iou": 0.7579,
+   "precision": 0.7976,
+   "recall": 0.9383
+  },
+  "metal, signal nets only (power-bus area excluded)": {
+   "iou": 0.7033,
+   "precision": 0.7104,
+   "recall": 0.986
+  },
+  "poly, exposed (not under metal)": {
+   "iou": 0.1846,
+   "precision": 0.5979,
+   "recall": 0.2107
+  },
+  "diffusion, exposed (not under metal/poly)": {
+   "iou": 0.2756,
+   "precision": 0.878,
+   "recall": 0.2866
+  }
+ }
+}
+{
+ "edge-bounded regions": {
+  "iou": 0.5091,
+  "precision": 0.6495,
+  "recall": 0.702
+ },
+ "pixel k-means": {
+  "iou": 0.4745,
+  "precision": 0.5394,
+  "recall": 0.7979
+ },
+ "pixel QDA (+hole fill)": {
+  "iou": 0.4581,
+  "precision": 0.6244,
+  "recall": 0.6324
+ },
+ "region_threshold_rel_L": [
+  -5.0
+ ]
+}
+{
+ "threshold_pct": 99.3,
+ "tolerance_px": 7.0,
+ "vs_visual6502_vias_to_diffusion": {
+  "precision": 0.4061,
+  "recall": 0.6817,
+  "f1": 0.509,
+  "pred": 5437,
+  "gt": 3239
+ },
+ "note": "GT centres come from a 1027-px render (+-2.3 px quantisation)"
+}
